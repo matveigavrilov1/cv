@@ -8,16 +8,19 @@
       firstname: config.basic.firstname,
       lastname: config.basic.lastname,
       position: config.basic.position,
-      phone: config.basic.phone,
-      email: config.basic.email,
-      telegram: config.basic.tg,
-      github: config.basic.github,
+      phone: config.contact.phone,
+      email: config.contact.email,
+      telegram: config.contact.tg,
+      github: config.contact.github,
     ),
     profile-picture: image("photo.png"),
   )
 
   #side[
-    = #config.titles.about
+		= #config.titles.summary
+
+		#config.summary
+
     = #config.titles.contact
 
     #contact-info()
@@ -50,8 +53,9 @@
         company: expItem.company,
         date: expItem.date,
         position: expItem.position,
+        summary: expItem.summary,
         achievments: expItem.achievments,
-				[#config.titles.stack: #expItem.stack]
+        [#config.titles.stack: #expItem.stack],
       )
     ]
   }
@@ -63,7 +67,7 @@
       #activity(
         title: activityItem.title,
         date: activityItem.date,
-        activityItem.description
+        activityItem.description,
       )
     ]
   }

@@ -57,6 +57,7 @@
   company: "",
   date: "",
   position: "",
+  summary: "",
   achievments: "",
   stack,
 ) = {
@@ -83,6 +84,7 @@
           #position
         ]))
 
+        #summary
         #v(0.3em)
         #{
           for achieve in achievments [
@@ -215,7 +217,7 @@
     }
   )
 
-  set text(font: body-font, size: 10pt, weight: "light", fill: font-color)
+  set text(font: body-font, size: 9.5pt, weight: "light", fill: font-color)
 
   set page(paper: paper-size, margin: (left: 12mm, right: 12mm, top: 10mm, bottom: 12mm), footer: if footer == auto {
     [
