@@ -7,13 +7,6 @@ Matvey Gavrilov, Software Engineer
 ## compile
 
 ```bash
-#fonts
-sudo apt update 
-sudo apt install fonts-noto
-sudo apt install fonts-firacode
-sudo apt install fonts-font-awesome
-sudo fc-cache -fv
-
-#compile
-typst compile cv.typ cv-m.gavrilov.pdf
+typst compile cv.en.typ m.gavrilov-cv.en.pdf
+typst compile cv.ru.typ m.gavrilov-cv.ru.pdf
 ```
