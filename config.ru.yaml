@@ -7,6 +7,13 @@ titles:
   exp: Опыт работы
   activities: Активности
   diploma: ВКР
+  soft: Soft скиллы
+  languages: Языки программирования
+  db: Базы данных
+  devtools: Инструменты разработчика
+  cicd: CI/CD
+  frameworks: Фреймворки
+  other: Дополнительно
 
 basic:
   firstname: Матвей
@@ -23,6 +30,30 @@ contact:
   phone: +7 (999) 526-40-52
   github: matveigavrilov1
 
+skills:
+  languages:
+   - C++20
+   - Bash
+   - Python3
+  db:
+   - PostgreSQL
+   - sysrepo
+  devtools:
+   - git
+   - CMake
+   - Bazel
+   - conan
+   - poetry
+   - doit
+  cicd:
+   - Docker
+   - Jenkins
+  frameworks:
+   - Boost
+   - gtest
+  other:
+   - Компьютерные сети
+  
 education:
   - degree: Бакалавр
     title: Информационные системы и технологии
@@ -43,7 +74,7 @@ exp:
     - "Портировал процедуру обновления ПО с базовой станции на GSM контроллер с глобальной переработкой стиля написания кода на языке Bash"
     - "Изучил руководства по эксплуатации RAID-контроллера и настроил RAID-5 с использованием самошифрующихся дисков на тестовом стенде GSM-контроллера"
     - "Выступал в роли куратора для новых сотрудников, а также для стажеров программы Импульсп"
-    stack: C++20, Bash, Python, Bazel, Conan, doit, poetry, Yocto, sysrepo, systemd, openssl, Gitlab, Bitbucket, Jira
+    stack: C++20, Bash, Python, Bazel, Conan, doit, poetry, Docker, Yocto, sysrepo, systemd, openssl, Gitlab, Bitbucket, Jira
   - company: НТЦ "Протей"
     date:
       start: "Январь 2024"
@@ -55,7 +86,7 @@ exp:
     - "Переработал на JSON-формат систему конфигурирования приложения MME для взаимодействия Web-интерфейсом"
     - "Разработал и интегрировал с CI конвертер для преобразования старых конфигураций приложения MME в новые"
     - "Переработал конфигурации сборки CMake приложения MME для более гибкой интеграции с CI и командой тестирования"
-    stack: C++11-17, Python, Bash, CMake, gtest, Jenkins, Gitlab, YouTrack
+    stack: C++11-17, Python, Bash, CMake, Docker, gtest, Jenkins, Gitlab, YouTrack
 
 activities:
   - title: "Решение задачи синхронизации при исполнении корутин C++20 в многопоточной среде"

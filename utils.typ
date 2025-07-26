@@ -269,7 +269,7 @@
   }
 
   let side-content = context {
-    set text(size: 0.72em)
+    set text(size: 0.75em)
 
     show heading.where(level: 1): it => block(width: 100%, above: 2em)[
       #set text(font: heading-font, fill: accent-color, weight: "regular")

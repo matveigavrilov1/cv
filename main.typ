@@ -32,6 +32,60 @@
 
     #v(-1em)
     = #config.titles.skills
+
+    #config.titles.languages
+    #v(0em)
+    #{
+      for skill in config.skills.languages [
+        - #skill
+      ]
+    }
+    #v(1em)
+
+		#config.titles.db
+    #v(0em)
+    #{
+      for skill in config.skills.db [
+        - #skill
+      ]
+    }
+    #v(1em)
+
+    #config.titles.devtools
+    #v(0em)
+    #{
+      for skill in config.skills.devtools [
+        - #skill
+      ]
+    }
+    #v(1em)
+
+    #config.titles.cicd
+    #v(0em)
+    #{
+      for skill in config.skills.cicd [
+        - #skill
+      ]
+    }
+    #v(1em)
+
+    #config.titles.frameworks
+    #v(0em)
+    #{
+      for skill in config.skills.frameworks [
+        - #skill
+      ]
+    }
+    #v(1em)
+
+    #config.titles.other
+    #v(0em)
+    #{
+      for skill in config.skills.other [
+        - #skill
+      ]
+    }
+    #v(1em)
   ]
 
   = #config.titles.education
