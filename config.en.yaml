@@ -1,16 +1,102 @@
+titles:
+  summary: Summary
+  contact: Contact
+  skills: Skills
+  stack: Stack
+  education: Education
+  exp: Work Experience
+  activities: Activities
+  diploma: Thesis
+  languages: Programming Languages
+  db: Databases
+  devtools: Developer Tools
+  cicd: CI/CD
+  frameworks: Frameworks
+  other: Additional
+
 basic:
   firstname: Matvey
   lastname: Gavrilov
   position: Software Engineer
+  age: "22 years"
+  city: Moscow, Russia
+
+summary: C++ developer with 2 years of experience in the Telecom domain. Interested in Linux and computer networks.
+
+contact:
   email: matveigavrilov@mail.ru
   tg: matveigavrilov1
-  phone: +7 (999) 526-40-52
+  phone: "+7 (999) 526-40-52"
   github: matveigavrilov1
 
+skills:
+  languages:
+    - C++20
+    - Bash
+    - Python3
+  db:
+    - PostgreSQL
+    - sysrepo
+  devtools:
+    - git
+    - CMake
+    - Bazel
+    - conan
+    - poetry
+    - doit
+  cicd:
+    - Docker
+    - Jenkins
+  frameworks:
+    - Boost
+    - gtest
+  other:
+    - Computer Networks
+
 education:
-  title: Информационные системы и технологии
-  institution: СПбГЭТУ "ЛЭТИ"
-  location: г. Санкт-Петербург, Россия
-  date: "2025"
-  diploma: Решение задачи синхронизации доступа к разделяемым данным при исполнении сопрограмм в многопточных информационных системах
-  
+  - degree: Bachelor
+    title: Information Systems and Technologies
+    institution: Saint Petersburg Electrotechnical University "LETI"
+    date: "2025"
+    diploma: Solution for shared data access synchronization during coroutine execution in multithreaded information systems
+
+exp:
+  - company: YADRO
+    date:
+      start: "November 2024"
+      end: "present"
+    position: Junior Software Engineer
+    summary: Worked in the platform development team providing infrastructure for product services of LTE/GSM base station and GSM controller
+    achievments:
+      - Developed a packet encryption system for software, its delivery and subsequent decryption with validation and installation on LTE/GSM base stations
+      - Developed a NetBoot installation system for GSM controller
+      - Ported the software update procedure from base station to GSM controller with complete refactoring of Bash code style
+      - Studied RAID controller manuals and configured RAID-5 with self-encrypting drives on GSM controller test bench
+      - Mentored new employees and interns in the Impulse program
+    stack: C++20, Bash, Python, Bazel, Conan, doit, poetry, Docker, Yocto, sysrepo, systemd, openssl, Gitlab, Bitbucket, Jira
+  - company: NTC "Protey"
+    date:
+      start: "January 2024"
+      end: "November 2024"
+    position: Junior Engineer
+    summary: Worked in the development team for MME application in LTE core networks
+    achievments:
+      - Developed and integrated a health monitoring system for MME application
+      - Redesigned MME configuration system to JSON format for web interface interaction
+      - Developed and CI-integrated a converter for transforming legacy MME configurations
+      - Refactored CMake build configurations for better CI and testing team integration
+    stack: C++11-17, Python, Bash, CMake, Docker, gtest, Jenkins, Gitlab, YouTrack
+
+activities:
+  - title: "Solution for synchronization during C++20 coroutine execution in multithreaded environment"
+    date: "Spring 2025"
+    description: "As part of thesis work, developed an architecture for multithreaded coroutine execution and a universal synchronization method. Created a benchmark program showing 30% performance improvement compared to traditional synchronization methods."
+  - title: "IT-LETI. Coroutines Workshop"
+    date: "May 2025"
+    description: "Developed a seminar program on C++20 coroutines for IT-LETI department students"
+  - title: "termKeeper"
+    date: "February 2025"
+    description: "Developed an application for storing and quick access to frequently used complex terminal commands. Created a custom engine for console UI rendering."
+  - title: "IT-LETI. C++ Course"
+    date: "2024"
+    description: "Developed and taught a semester-long educational course on C++ and STL for IT-LETI students. Link: https://github.com/matveigavrilov1/IT-LETI-2024-CXX-STL"
