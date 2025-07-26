@@ -1,4 +1,4 @@
-#import "utils.typ": cv, contact-info, side, entry
+#import "utils.typ": contact-info, cv, education, exp, activity, side
 
 #let main(
   config: none,
@@ -11,39 +11,42 @@
       phone: config.basic.phone,
       email: config.basic.email,
       telegram: config.basic.tg,
-      github: config.basic.github
+      github: config.basic.github,
     ),
     profile-picture: image("photo.png"),
   )
 
   #side[
-    = About Me
-    = Contact
-    
+    = #config.titles.about
+    = #config.titles.contact
+
     #contact-info()
 
-    = Skills
+    = #config.titles.skills
   ]
 
-  = Education
+  = #config.titles.education
 
-  #entry(
-    title: "Master of Science in Data Science",
-    institution: "University of Somewhere",
-    location: "Somewhere, World",
-    date: "2023",
-    [Thesis: "My thesis title"],
-  )
+  #{
+    for educationItem in config.education [
+      #education(
+        title: educationItem.title,
+        institution: educationItem.institution,
+        degree: educationItem.degree,
+        date: educationItem.date,
+        [
+          #config.titles.diploma: #educationItem.diploma
+        ],
+      )
 
-  = Experience
+    ]
+  }
 
-  #entry(
-    title: "Data Scientist",
-    institution: "Somewhere Inc.",
-    location: "Somewhere, World",
-    date: "2023 - Present",
-    [
-      - Worked on some interesting projects.
-    ],
-  )
+  = #config.titles.exp
+
+  #exp(title: "Data Scientist", institution: "Somewhere Inc.", location: "Somewhere, World", date: "2023 - Present", [
+    - Worked on some interesting projects.
+  ])
+
+  = #config.titles.activities
 ]

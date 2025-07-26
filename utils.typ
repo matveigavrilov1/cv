@@ -1,8 +1,6 @@
 #let __st-theme = state("theme")
 #let __st-author = state("author")
-/// Displays a list of items as "pills" (tags).
-/// - items (array): List of items to display as pills
-/// - justify (boolean): Whether to justify the pills (default: true)
+
 #let item-pills(items, justify: true) = (
   context {
     let theme = __st-theme.final()
@@ -22,16 +20,42 @@
   }
 )
 
+#let education(
+  title: none,
+  date: "",
+  institution: "",
+  degree: "",
+  description,
+) = {
+  context block(above: 1em, below: 0.65em)[
+    #let theme = __st-theme.final()
 
-// ---- Entry Blocks ----
+    #grid(
+      columns: (1cm, auto),
+      align: (right, left),
+      column-gutter: .8em,
+      [
+        #text(size: 0.8em, fill: theme.font-color.lighten(50%), date)
+      ],
+      [
+        #set text(size: 0.85em)
 
-/// Generic entry for education, experience, etc.
-/// - title (string): Entry title
-/// - date (string): Date or range
-/// - institution (string): Institution or company
-/// - location (string): Location
-/// - description (content): Description/details
-#let entry(
+        #text(weight: "semibold", smallcaps([
+          #title
+          #h(1fr)
+          #degree
+        ]))
+
+        #text(size: 0.9em, [#institution])
+        #v(0.3em)
+
+        #text(size: 0.9em, description)
+      ],
+    )
+  ]
+}
+
+#let exp(
   title: none,
   date: "",
   institution: "",
@@ -42,7 +66,7 @@
     #let theme = __st-theme.final()
 
     #grid(
-      columns: (2cm, auto),
+      columns: (1cm, auto),
       align: (right, left),
       column-gutter: .8em,
       [
@@ -58,31 +82,49 @@
           #h(1fr)
           #location
         ]))
-
+        #v(0.3em)
+		
         #text(size: 0.9em, description)
       ],
     )
   ]
 }
 
-/// Entry with a level bar (e.g., for skills).
-/// - title (string): Item name
-/// - level (int): Level value
-/// - subtitle (string): Optional subtitle
-#let item-with-level(title, level, subtitle: "") = (
-  context {
-    let theme = __st-theme.final()
+#let activity(
+  title: none,
+  date: "",
+  institution: "",
+  location: "",
+  description,
+) = {
+  context block(above: 1em, below: 0.65em)[
+    #let theme = __st-theme.final()
 
-    block()[
-      #text(title)
-      #h(1fr)
-      #text(fill: theme.font-color.lighten(40%), subtitle)
-      #level-bar(level, width: 100%)
-    ]
-  }
-)
+    #grid(
+      columns: (1cm, auto),
+      align: (right, left),
+      column-gutter: .8em,
+      [
+        #text(size: 0.8em, fill: theme.font-color.lighten(50%), date)
+      ],
+      [
+        #set text(size: 0.85em)
 
-/// Displays the author's contact information (email, phone, address).
+        #text(weight: "semibold", title)
+
+        #text(size: 0.9em, smallcaps([
+          #institution
+          #h(1fr)
+          #location
+        ]))
+        #v(0.3em)
+		
+        #text(size: 0.9em, description)
+      ],
+    )
+  ]
+}
+
 #let contact-info() = (
   context [
     #let author = __st-author.final()
@@ -116,7 +158,7 @@
 
     #if contact-items.len() > 0 {
       table(
-        columns: (12em),
+        columns: (20em),
         align: (left, left),
         inset: 0pt,
         column-gutter: 0.5em,
@@ -130,101 +172,6 @@
   ]
 )
 
-
-// ---- Publications ----
-
-/// Formats a publication entry (article, conference, etc.).
-/// - pub (dictionary): Publication data
-/// - highlight-authors (array): Authors to highlight
-/// - max-authors (int): Max authors to display before "et al."
-#let __format-publication-entry(pub, highlight-authors, max-authors) = {
-  for (i, author) in pub.author.enumerate() {
-    if i < max-authors {
-      let author-display = {
-        let author_parts = author.split(", ")
-        let last_name = author_parts.at(0, default: author)
-        let first_names_str = author_parts.at(1, default: "")
-
-        let initials_content = first_names_str
-          .split(" ")
-          .filter(p => p.len() > 0)
-          .map(p => [#p.at(0).])
-
-        let joined_initials = if initials_content.len() > 0 {
-          initials_content.join(" ")
-        } else {
-          []
-        }
-
-        if first_names_str == "" {
-          [#last_name]
-        } else {
-          [#last_name, #joined_initials]
-        }
-      }
-
-      if author in highlight-authors {
-        text(weight: "medium", author-display)
-      } else {
-        author-display
-      }
-
-      if i < max-authors - 1 and i < pub.author.len() - 1 {
-        if i == pub.author.len() - 2 {
-          [ and ]
-        } else {
-          [, ]
-        }
-      }
-    } else if i == max-authors {
-      [_ et al_]
-      break
-    }
-  }
-
-  [. #pub.title.]
-
-  let parent = pub.parent
-
-  if parent.type == "proceedings" {
-    [ in ]
-  }
-
-  [ #text(style: "italic", parent.title)]
-
-  if "volume" in parent and parent.volume != none {
-    [ #text(style: "italic", str(parent.volume)), ]
-  }
-
-  [ #pub.at("page-range", default: "")]
-
-  if "date" in pub {
-    [ (#pub.date).]
-  }
-
-  if "serial-number" in pub and "doi" in pub.serial-number {
-    [
-      doi: #link("https://doi.org/" + pub.serial-number.doi)[#text(style: "italic", str(pub.serial-number.doi))]
-    ]
-  }
-}
-
-// ---- Main CV Template ----
-
-/// Main CV layout. Sets up theme, fonts, page, and structure.
-/// - author (dictionary): Author information (firstname, lastname, etc.)
-/// - profile-picture (image): Profile picture
-/// - accent-color (color): Accent color for highlights
-/// - font-color (color): Main text color
-/// - header-color (color): Color for header background
-/// - date (string): Date string for footer
-/// - heading-font (string): Font for headings
-/// - body-font (array): Font(s) for body text
-/// - paper-size (string): Paper size
-/// - side-width (length): Sidebar width
-/// - gdpr (boolean): Add GDPR data usage in the footer
-/// - footer (content): Optional custom footer
-/// - body (content): Main content of the CV
 #let cv(
   author: (:),
   profile-picture: none,
