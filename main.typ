@@ -17,14 +17,20 @@
   )
 
   #side[
-		= #config.titles.summary
+    #config.basic.age
 
-		#config.summary
+    #config.basic.city
+    #v(-1em)
+    = #config.titles.summary
 
+    #config.summary
+
+    #v(-1em)
     = #config.titles.contact
 
     #contact-info()
 
+    #v(-1em)
     = #config.titles.skills
   ]
 
