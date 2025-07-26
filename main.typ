@@ -1,4 +1,4 @@
-#import "utils.typ": contact-info, cv, education, exp, activity, side
+#import "utils.typ": activity, contact-info, cv, education, exp, side
 
 #let main(
   config: none,
@@ -44,9 +44,17 @@
 
   = #config.titles.exp
 
-  #exp(title: "Data Scientist", institution: "Somewhere Inc.", location: "Somewhere, World", date: "2023 - Present", [
-    - Worked on some interesting projects.
-  ])
+  #{
+    for expItem in config.exp [
+      #exp(
+        company: expItem.company,
+        date: expItem.date,
+        position: expItem.position,
+        achievments: expItem.achievments,
+				[#config.titles.stack: #expItem.stack]
+      )
+    ]
+  }
 
   = #config.titles.activities
 ]

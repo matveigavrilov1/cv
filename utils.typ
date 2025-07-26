@@ -8,15 +8,13 @@
     set text(size: 0.85em, spacing: 0.5em)
     set par(justify: justify)
 
-    block(
-      items
-        .map(item => box(
-          inset: (x: 3pt, y: 3pt),
-          stroke: theme.accent-color + 0.5pt,
-          item,
-        ))
-        .join(" "),
-    )
+    block(items
+      .map(item => box(
+        inset: (x: 3pt, y: 3pt),
+        stroke: theme.accent-color + 0.5pt,
+        item,
+      ))
+      .join(" "))
   }
 )
 
@@ -56,35 +54,43 @@
 }
 
 #let exp(
-  title: none,
+  company: "",
   date: "",
-  institution: "",
-  location: "",
-  description,
+  position: "",
+  achievments: "",
+  stack,
 ) = {
   context block(above: 1em, below: 0.65em)[
     #let theme = __st-theme.final()
 
     #grid(
-      columns: (1cm, auto),
-      align: (right, left),
+      columns: (2cm, auto),
+      align: (left, left),
       column-gutter: .8em,
       [
-        #text(size: 0.8em, fill: theme.font-color.lighten(50%), date)
+        #text(size: 0.7em, fill: theme.font-color.lighten(50%), smallcaps([
+          #date.start
+          #v(0em)
+          #"-" #date.end
+        ]))
       ],
       [
         #set text(size: 0.85em)
 
-        #text(weight: "semibold", title)
-
-        #text(size: 0.9em, smallcaps([
-          #institution
+        #text(weight: "semibold", smallcaps([
+          #company
           #h(1fr)
-          #location
+          #position
         ]))
+
         #v(0.3em)
-		
-        #text(size: 0.9em, description)
+        #{
+          for achieve in achievments [
+            - #text(size: 0.9em, achieve)
+          ]
+        }
+
+        #text(size: 0.9em, stack)
       ],
     )
   ]
@@ -118,7 +124,7 @@
           #location
         ]))
         #v(0.3em)
-		
+
         #text(size: 0.9em, description)
       ],
     )
@@ -158,7 +164,7 @@
 
     #if contact-items.len() > 0 {
       table(
-        columns: (20em),
+        columns: 20em,
         align: (left, left),
         inset: 0pt,
         column-gutter: 0.5em,
@@ -180,7 +186,7 @@
   header-color: luma(50),
   date: datetime.today().display("[month repr:long] [year]"),
   heading-font: "Fira Code",
-  body-font: ("Fira Code"),
+  body-font: "Fira Code",
   paper-size: "us-letter",
   side-width: 4cm,
   gdpr: false,
@@ -218,17 +224,13 @@
 
   set text(font: body-font, size: 10pt, weight: "light", fill: font-color)
 
-  set page(
-    paper: paper-size,
-    margin: (left: 12mm, right: 12mm, top: 10mm, bottom: 12mm),
-    footer: if footer == auto {
-      [
-        #set text(size: 0.7em, fill: font-color.lighten(50%))
-      ]
-    } else {
-      footer
-    },
-  )
+  set page(paper: paper-size, margin: (left: 12mm, right: 12mm, top: 10mm, bottom: 12mm), footer: if footer == auto {
+    [
+      #set text(size: 0.7em, fill: font-color.lighten(50%))
+    ]
+  } else {
+    footer
+  })
 
   set par(spacing: 0.75em, justify: true)
 
@@ -254,7 +256,7 @@
           #set text(fill: white, font: heading-font)
 
           #text(size: 2em)[
-            #text(weight: "light")[#author.firstname] #text(
+            #text(weight: "medium")[#author.firstname] #text(
               weight: "medium",
             )[#author.lastname]
           ]
@@ -280,8 +282,7 @@
       #grid(
         columns: (0pt, 1fr),
         align: horizon,
-        box(fill: accent-color, width: -4pt, height: 12pt, outset: (left: 6pt)),
-        it.body,
+        box(fill: accent-color, width: -4pt, height: 12pt, outset: (left: 6pt)), it.body,
       )
     ]
 
