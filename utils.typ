@@ -29,7 +29,7 @@
     #let theme = __st-theme.final()
 
     #grid(
-      columns: (1cm, auto),
+      columns: (1cm, 12.7cm),
       align: (right, left),
       column-gutter: .8em,
       [
@@ -64,7 +64,7 @@
     #let theme = __st-theme.final()
 
     #grid(
-      columns: (2cm, auto),
+      columns: (2cm, 11.7cm),
       align: (left, left),
       column-gutter: .8em,
       [
@@ -99,15 +99,13 @@
 #let activity(
   title: none,
   date: "",
-  institution: "",
-  location: "",
   description,
 ) = {
   context block(above: 1em, below: 0.65em)[
     #let theme = __st-theme.final()
 
     #grid(
-      columns: (1cm, auto),
+      columns: (1cm, 12.7cm),
       align: (right, left),
       column-gutter: .8em,
       [
@@ -118,11 +116,6 @@
 
         #text(weight: "semibold", title)
 
-        #text(size: 0.9em, smallcaps([
-          #institution
-          #h(1fr)
-          #location
-        ]))
         #v(0.3em)
 
         #text(size: 0.9em, description)

@@ -57,4 +57,14 @@
   }
 
   = #config.titles.activities
+
+  #{
+    for activityItem in config.activities [
+      #activity(
+        title: activityItem.title,
+        date: activityItem.date,
+        activityItem.description
+      )
+    ]
+  }
 ]
