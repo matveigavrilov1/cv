@@ -74,7 +74,7 @@ exp:
       - Studied RAID controller manuals and configured RAID-5 with self-encrypting drives on GSM controller test bench
       - Mentored new employees and interns in the Impulse program
     stack: C++20, Bash, Python, Bazel, Conan, doit, poetry, Docker, Yocto, sysrepo, systemd, openssl, Gitlab, Bitbucket, Jira
-  - company: NTC "Protey"
+  - company: PROTEI
     date:
       start: "January 2024"
       end: "November 2024"
