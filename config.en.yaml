@@ -1,0 +1,16 @@
+basic:
+  firstname: Matvey
+  lastname: Gavrilov
+  position: Software Engineer
+  email: matveigavrilov@mail.ru
+  tg: matveigavrilov1
+  phone: +7 (999) 526-40-52
+  github: matveigavrilov1
+
+education:
+  title: Информационные системы и технологии
+  institution: СПбГЭТУ "ЛЭТИ"
+  location: г. Санкт-Петербург, Россия
+  date: "2025"
+  diploma: Решение задачи синхронизации доступа к разделяемым данным при исполнении сопрограмм в многопточных информационных системах
+  

@@ -1,29 +1,32 @@
-#import "@preview/neat-cv:0.2.1": cv, side, entry, item-with-level, contact-info, social-links
+#import "utils.typ": cv, contact-info, side, entry
+#import "@preview/defined:0.1.0": *
+
+#context if defined[CONFIG_ENG] [
+  #let config = yaml("config.en.yaml")
+] else [
+	#let config = yaml("config.ru.yaml")
+]
 
 #show: cv.with(
   author: (
-    firstname: "John",
-    lastname: "Smith",
-    email: "john.smith@example.com",
-    position: ("Data Scientist"),
-    github: "jsmith",
+    firstname: config.basic.firstname,
+    lastname: config.basic.lastname,
+    position: config.basic.position,
+		phone: config.basic.phone,
+		email: config.basic.email,
+		telegram: config.basic.tg,
+		github: config.basic.github
   ),
   profile-picture: image("photo.png"),
 )
 
 #side[
   = About Me
-  Just someone learning Typst.
-
   = Contact
-  #contact-info()
+
+	#contact-info()
 
   = Skills
-  #item-with-level("Python", 4)
-  #item-with-level("Bash", 3)
-
-  #v(1fr)
-  #social-links()
 ]
 
 = Education
