@@ -7,12 +7,6 @@ titles:
   exp: Work Experience
   activities: Activities
   diploma: Thesis
-  languages: Programming Languages
-  db: Databases
-  devtools: Developer Tools
-  cicd: CI/CD
-  frameworks: Frameworks
-  other: Additional
 
 basic:
   firstname: Matvey
@@ -30,28 +24,34 @@ contact:
   github: matveigavrilov1
 
 skills:
-  languages:
-    - C++20
-    - Bash
-    - Python3
-  db:
-    - PostgreSQL
-    - sysrepo
-  devtools:
-    - git
-    - CMake
-    - Bazel
-    - conan
-    - poetry
-    - doit
-  cicd:
-    - Docker
-    - Jenkins
-  frameworks:
-    - Boost
-    - gtest
-  other:
-    - Computer Networks
+  - title: Programming Languages
+    items:
+      - C++20
+      - Bash
+      - Python3
+  - title: Databases
+    items:
+      - PostgreSQL
+      - sysrepo
+  - title: Developer Tools
+    items:
+      - git
+      - CMake
+      - Bazel
+      - conan
+      - poetry
+      - doit
+  - title: CI/CD
+    items:
+      - Docker
+      - Jenkins
+  - title: Frameworks
+    items:
+      - Boost
+      - gtest
+  - title: Additional
+    items:
+      - Computer Networks
 
 education:
   - degree: Bachelor

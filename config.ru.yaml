@@ -7,12 +7,6 @@ titles:
   exp: Опыт работы
   activities: Активности
   diploma: ВКР
-  languages: Языки программирования
-  db: Базы данных
-  devtools: Инструменты разработчика
-  cicd: CI/CD
-  frameworks: Фреймворки
-  other: Дополнительно
 
 basic:
   firstname: Матвей
@@ -30,29 +24,35 @@ contact:
   github: matveigavrilov1
 
 skills:
-  languages:
-   - C++20
-   - Bash
-   - Python3
-  db:
-   - PostgreSQL
-   - sysrepo
-  devtools:
-   - git
-   - CMake
-   - Bazel
-   - conan
-   - poetry
-   - doit
-  cicd:
-   - Docker
-   - Jenkins
-  frameworks:
-   - Boost
-   - gtest
-  other:
-   - Компьютерные сети
-  
+  - title: Языки программирования
+    items:
+      - C++20
+      - Bash
+      - Python3
+  - title: Базы данных
+    items:
+      - PostgreSQL
+      - sysrepo
+  - title: Инструменты разработчика
+    items:
+      - git
+      - CMake
+      - Bazel
+      - conan
+      - poetry
+      - doit
+  - title: CI/CD
+    items:
+      - Docker
+      - Jenkins
+  - title: Фреймворки
+    items:
+      - Boost
+      - gtest
+  - title: Дополнительно
+    items:
+      - Компьютерные сети
+
 education:
   - degree: Бакалавр
     title: Информационные системы и технологии
