@@ -49,6 +49,10 @@ skills:
     items:
       - Boost
       - gtest
+  - title: Languages
+    items:
+      - Russian
+      - English (B2)
   - title: Additional
     items:
       - Computer Networks
